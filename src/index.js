@@ -1,7 +1,5 @@
 const { Client, IntentsBitField } = require("discord.js");
-const { json } = require("express");
 const fs = require("fs/promises");
-const { templateSettings } = require("lodash");
 const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
