@@ -1,3 +1,5 @@
+const fs = require("fs/promises");
+
 const pingPong = async (message) => {
   if (message.author.bot) {
     return;
