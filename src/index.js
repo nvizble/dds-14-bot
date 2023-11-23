@@ -1,5 +1,4 @@
 const { Client, IntentsBitField } = require("discord.js");
-const fs = require("fs/promises");
 const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
