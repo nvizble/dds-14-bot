@@ -23,5 +23,5 @@ client.on("messageCreate", controllers.findDepende);
 client.on("messageCreate", controllers.dependeCounter);
 
 client.login(
-  //insira o token de acesso aqui
+//token
 );
