@@ -1,5 +1,4 @@
 const { Client, IntentsBitField } = require("discord.js");
-const fs = require("fs/promises");
 const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
@@ -10,6 +9,8 @@ const client = new Client({
 });
 
 const controllers = require("./controllers/controllers");
+
+client.on("messageCreate", controllers.help)
 
 client.on("messageCreate", controllers.pingPong);
 
@@ -22,5 +23,5 @@ client.on("messageCreate", controllers.findDepende);
 client.on("messageCreate", controllers.dependeCounter);
 
 client.login(
-  //token de acesso do bot
+  "MTE3NzIwMDkxNDk5ODc3NTgzOA.Gi9EXo.fnLOIjtR0wyDZKS3sOjuesHEEMJVESifhjftYI"
 );

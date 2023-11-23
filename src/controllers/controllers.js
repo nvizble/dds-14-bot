@@ -1,8 +1,10 @@
+const fs = require("fs/promises");
+
 const pingPong = async (message) => {
   if (message.author.bot) {
     return;
   }
-  if (message.content.toLowerCase() === "ping") {
+  if (message.content.toLowerCase() === "!ping") {
     message.reply("pong");
   }
 };
@@ -24,9 +26,10 @@ const dependeCounter = async (message) => {
 };
 
 const findDepende = async (message) => {
-  if (message.author.bot) {
+  if (message.author.id === "1177200914998775838") {
     return;
   }
+
   if (message.content.toLowerCase() === "!dependecounter") {
     return;
   }
@@ -67,10 +70,22 @@ const welcomeMessage = async (member) => {
   channel.send(`Bem vindo ao servidor da DDS14, ${member}`);
 };
 
+const help = (message) => {
+  if (message.author.bot) {
+    return;
+  }
+  if (message.content.toLowerCase() === "!help") {
+    message.reply(
+      "Olá, eu sou o bot da DDS14, e estou aqui para te ajudar, os comandos disponíveis são: !helloworld, !dependecounter, !help, !ping, eu também respondo a mensagens que contenham a palavra depende, e dou boas vindas a novos membros do servidor."
+    );
+  }
+};
+
 module.exports = {
   pingPong,
   dependeCounter,
   findDepende,
   helloWorld,
   welcomeMessage,
+  help,
 };
