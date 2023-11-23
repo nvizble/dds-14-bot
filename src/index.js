@@ -9,75 +9,18 @@ const client = new Client({
   ],
 });
 
-client.on("messageCreate", async (message) => {
-  if (message.author.bot) {
-    return;
-  }
-  if (message.content.toLowerCase() === "ping") {
-    message.reply("pong");
-  }
-});
+const controllers = require("./controllers/controllers");
 
-client.on("messageCreate", async (message) => {
-  if (message.author.bot) {
-    return;
-  }
-  if (message.content.toLowerCase() === "!helloworld") {
-    message.reply("Hello World!");
-  }
-});
+client.on("messageCreate", controllers.pingPong);
 
-client.on("guildMemberAdd", async (member) => {
-  const channel = member.guild.channels.cache.find(
-    (ch) => ch.name === "welcome"
-  );
-  if (!channel) {
-    return;
-  }
-  channel.send(`Bem vindo ao servidor da DDS14, ${member}`);
-});
+client.on("messageCreate", controllers.helloWorld);
 
-client.on("messageCreate", async (message) => {
-  if (message.author.bot) {
-    return;
-  }
-  if (message.content.toLowerCase() === "!dependecounter") {
-    return;
-  }
+client.on("guildMemberAdd", controllers.welcomeMessage);
 
-  if (message.content.toLowerCase().includes("depende")) {
-    message.reply("Depende do que? Calma lá Elias!!!!");
-  }
-  try {
-    const depende = await fs.readFile("./data/database.json");
-    const dependeOBJ = JSON.parse(depende);
-    dependeOBJ.depende++;
-    await fs.writeFile(
-      "./data/database.json",
-      JSON.stringify(dependeOBJ, null, 2)
-    );
-    return;
-  } catch (error) {
-    console.log(error);
-  }
-});
+client.on("messageCreate", controllers.findDepende);
 
-client.on("messageCreate", async (message) => {
-  if (message.author.bot) {
-    return;
-  }
-  if (message.content.toLowerCase() === "!dependecounter") {
-    try {
-      const depende = await fs.readFile("./data/database.json");
-      const dependeOBJ = JSON.parse(depende);
-      message.reply(`O depende já foi dito ${dependeOBJ.depende} vezes`);
-      return;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-});
+client.on("messageCreate", controllers.dependeCounter);
 
 client.login(
-  "--token da aplicação não pode ser compartilhado no github"
+  //token de acesso do bot
 );
