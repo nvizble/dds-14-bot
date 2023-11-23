@@ -10,6 +10,8 @@ const client = new Client({
 
 const controllers = require("./controllers/controllers");
 
+client.on("messageCreate", controllers.help)
+
 client.on("messageCreate", controllers.pingPong);
 
 client.on("messageCreate", controllers.helloWorld);
@@ -21,5 +23,5 @@ client.on("messageCreate", controllers.findDepende);
 client.on("messageCreate", controllers.dependeCounter);
 
 client.login(
-  //token de acesso do bot
+ // inserir token de acesso aqui
 );
