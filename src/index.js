@@ -81,5 +81,5 @@ client.on("messageCreate", async (message) => {
 });
 
 client.login(
-  "MTE3NzIwMDkxNDk5ODc3NTgzOA.G7SvNr.eo-anxCT-DJwbFxcREEPbSkJ0pODLv29sF5VUU"
+  "--token da aplicação não pode ser compartilhado no github"
 );
